@@ -1,3 +1,8 @@
+<img src="https://static.solved.ac/tier_small/21.svg" width="20px">
+
+[문제 링크](https://www.acmicpc.net/problem/13705)
+
+
 # 아이디어
 
 이분법 또는 뉴턴(= 뉴턴 랩슨)법으로 접근할 수 있다. 나 같은 경우엔 뉴턴법이 코드 작성에 더 직관적이라고 판단해서 이 방법을 사용했다.
