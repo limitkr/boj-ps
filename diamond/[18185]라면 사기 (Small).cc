@@ -1,0 +1,49 @@
+/**
+ * @file 라면_사기_(Small).cpp
+ * @author limitkr
+ * @version 0.1
+ * @date 2024-09-07 09:24:19
+ */
+#pragma GCC optimize("O3")
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+using ld = long double;
+
+#define FAST_IO cin.tie(nullptr)->sync_with_stdio(false)
+#define endl '\n'
+#define vt vector
+#define ar array
+
+int N;
+
+auto main() -> int32_t {
+  FAST_IO;
+  cin >> N;
+  vt f(3, vt<int>(N));
+  for (int i = 0; i < N; i++)
+    cin >> f[0][i];
+
+  auto solve = [&](const int i) {
+    f[1][i] = ranges::min(f[0][i], f[0][i - 1]);
+    f[0][i] -= f[1][i];
+    f[0][i - 1] -= f[1][i];
+
+    f[2][i] = ranges::min(f[0][i], f[1][i - 1]);
+    f[0][i] -= f[2][i];
+    f[1][i - 1] -= f[2][i];
+  };
+  for (int i = 1; i < N; i++) {
+    solve(i);
+  }
+
+  int res = 0;
+  for (int i = 0; i < N; i++) {
+    res += f[0][i] * 3 + f[1][i] * 5 + f[2][i] * 7;
+  }
+  cout << res;
+  return 0;
+}
